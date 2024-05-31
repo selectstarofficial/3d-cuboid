@@ -1013,13 +1013,9 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
 
     let folderCube = folderBoundingBox3DArray[insertIndex].addFolder('Size');
 
-    let cubeWidth = folderCube.add(bbox, 'width').name("width").min(0.010).max(13.000).step(0.001);
-    let cubeLength = folderCube.add(bbox, 'length').name("length").min(0.010).max(5.000).step(0.001);
-    let cubeHeight = folderCube.add(bbox, 'height').name("height").min(0.010).max(5.000).step(0.001);
-
-    $(cubeWidth.domElement).find('input').val(bbox.width.toFixed(3));
-    $(cubeLength.domElement).find('input').val(bbox.length.toFixed(3));
-    $(cubeHeight.domElement).find('input').val(bbox.height.toFixed(3));
+    let cubeWidth = folderCube.add(bbox, 'width').name("width").min(0.01).max(13).step(0.001);
+    let cubeLength = folderCube.add(bbox, 'length').name("length").min(0.01).max(5).step(0.001);
+    let cubeHeight = folderCube.add(bbox, 'height').name("height").min(0.01).max(5).step(0.001);
     folderCube.close();
     folderSizeArray.push(folderCube);
 
@@ -1243,7 +1239,6 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
     cubeWidth.onChange(function (value) {
         changeCube(value, "width");
     }).onFinishChange(val => {
-        $(cubeWidth.domElement).find('input').val(val.toFixed(3));
         let prevValueList = getPrevValueToUndo('width');
         let changeBboxProperty = {
             "type": "UPDATE_BOX_PROPERTY",
@@ -1258,7 +1253,6 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
     cubeLength.onChange(function (value) {
         changeCube(value, 'length')
     }).onFinishChange(val => {
-        $(cubeLength.domElement).find('input').val(val.toFixed(3));
         let prevValueList = getPrevValueToUndo('length');
         let changeBboxProperty = {
             "type": "UPDATE_BOX_PROPERTY",
@@ -1273,7 +1267,6 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
     cubeHeight.onChange(function (value) {
         changeCube(value, 'height')
     }).onFinishChange(val => {
-        $(cubeHeight.domElement).find('input').val(val.toFixed(3));
         let prevValueList = getPrevValueToUndo('height');
         let changeBboxProperty = {
             "type": "UPDATE_BOX_PROPERTY",
@@ -2022,18 +2015,13 @@ function updateScreenPosition() {
         cubePosition.x = Math.round((0.5 + cubePosition.x / 2) * (canvas.width));
         cubePosition.y = Math.round((0.5 - cubePosition.y / 2) * (canvas.height));
         if (annotationObj.trackId !== undefined) {
-            try{
-                let classTooltip = $("#tooltip-" + annotationObj.class.charAt(0) + annotationObj.trackId)[0];
-                if (classTooltip !== undefined) {
-                    let imagePaneHeight = parseInt($("#layout_layout_resizer_top").css("top"), 10);
-                    classTooltip.style.top = `${cubePosition.y + headerHeight + imagePaneHeight - 21}px`;
-                    classTooltip.style.left = `${cubePosition.x}px`;
-                    classTooltip.style.opacity = spriteBehindObject ? 0.25 : 1;
-                }
-            }catch (e){
-
+            let classTooltip = $("#tooltip-" + annotationObj.class.charAt(0) + annotationObj.trackId)[0];
+            if (classTooltip !== undefined) {
+                let imagePaneHeight = parseInt($("#layout_layout_resizer_top").css("top"), 10);
+                classTooltip.style.top = `${cubePosition.y + headerHeight + imagePaneHeight - 21}px`;
+                classTooltip.style.left = `${cubePosition.x}px`;
+                classTooltip.style.opacity = spriteBehindObject ? 0.25 : 1;
             }
-
         }
     }
 }
