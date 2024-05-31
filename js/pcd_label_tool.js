@@ -1013,9 +1013,9 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
 
     let folderCube = folderBoundingBox3DArray[insertIndex].addFolder('Size');
 
-    let cubeWidth = folderCube.add(bbox, 'width').name("width").min(0.01).max(13).step(0.001);
-    let cubeLength = folderCube.add(bbox, 'length').name("length").min(0.01).max(5).step(0.001);
-    let cubeHeight = folderCube.add(bbox, 'height').name("height").min(0.01).max(5).step(0.001);
+    let cubeWidth = folderCube.add(bbox, 'width').name("width").min(0.01).max(13).step(0.001).listen();
+    let cubeLength = folderCube.add(bbox, 'length').name("length").min(0.01).max(5).step(0.001).listen();
+    let cubeHeight = folderCube.add(bbox, 'height').name("height").min(0.01).max(5).step(0.001).listen();
     folderCube.close();
     folderSizeArray.push(folderCube);
 
