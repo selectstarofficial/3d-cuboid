@@ -997,7 +997,8 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
     folderPositionArray.push(folderPosition);
 
     let folderRotation = folderBoundingBox3DArray[insertIndex].addFolder('Rotation');
-    let cubeYaw = folderRotation.add(bbox, 'rotationYaw').name("rotationYaw").min(-Math.PI).max(Math.PI).step(0.01).listen();
+    let cubeYaw = folderRotation.add(bbox, 'rotationYaw').name("rotationYaw").min(-Math.PI).max(Math.PI).step(0.01);
+    $(cubeYaw.domElement).find('input').val(bbox.rotationYaw.toFixed(2));
     // swap roll and pitch for providentia
     let cubePitch;
     let cubeRoll;
