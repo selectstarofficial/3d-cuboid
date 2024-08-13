@@ -17,7 +17,7 @@ const classes = [
     },
     {
         key: "TRUCK.DUMP",
-        color: "#5CADCF"
+        color: "#fecb00"
     },
     {
         key: "TRAILER.HEAD",
@@ -29,11 +29,11 @@ const classes = [
     },
     {
         key: "BUS.MID",
-        color: "#6ABB72"
+        color: "#fc6000"
     },
     {
         key: "BUS.HEAVY",
-        color: "#E66B5B"
+        color: "#d40000"
     },
     {
         key: "DOOR.SIDE",
@@ -134,6 +134,10 @@ const classes = [
     {
         key: "OTHER_OBJECT",
         color: "#A3DB37"
+    },
+    {
+        key: "Miss_GT",
+        color: "#000083"
     }
 ];
 
