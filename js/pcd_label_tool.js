@@ -1003,11 +1003,11 @@ function addBoundingBoxGui(bbox, bboxEndParams) {
     let cubePitch;
     let cubeRoll;
     if (labelTool.currentDataset === labelTool.datasets.NuScenes) {
-        cubePitch = folderRotation.add(bbox, 'rotationPitch').name("rotationPitch").min(-Math.PI).max(Math.PI).step(0.01).listen();
-        cubeRoll = folderRotation.add(bbox, 'rotationRoll').name("rotationRoll").min(-Math.PI).max(Math.PI).step(0.01).listen();
+        cubePitch = folderRotation.add(bbox, 'rotationPitch').name("rotationPitch").min(0).max(0).step(0.01).listen();
+        cubeRoll = folderRotation.add(bbox, 'rotationRoll').name("rotationRoll").min(0).max(0).step(0.01).listen();
     } else {
-        cubePitch = folderRotation.add(bbox, 'rotationPitch').name("rotationRoll").min(-Math.PI).max(Math.PI).step(0.01).listen();
-        cubeRoll = folderRotation.add(bbox, 'rotationRoll').name("rotationPitch").min(-Math.PI).max(Math.PI).step(0.01).listen();
+        cubePitch = folderRotation.add(bbox, 'rotationPitch').name("rotationRoll").min(0).max(0).step(0.01).listen();
+        cubeRoll = folderRotation.add(bbox, 'rotationRoll').name("rotationPitch").min(0).max(0).step(0.01).listen();
     }
     folderRotation.close();
     folderRotationArray.push(folderRotation);
